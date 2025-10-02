@@ -13,7 +13,10 @@ const handleClick = () => {
 }
 
 useEffect(() => [
-
+  setTimeout(() => {
+    handleClick()
+  }, 5000),
+  setCount(count + 1)
 ],[count])
 
   return (

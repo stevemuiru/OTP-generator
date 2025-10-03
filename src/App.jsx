@@ -10,14 +10,17 @@ const [isDisabled, setDisabled] = useState(false)
 const handleClick = () => {
  const otp = Math.floor(100000 + Math.random() * 900000)
  setOtp(otp)
+ setCount(5)
+ setDisabled(true)
 }
 
-useEffect(() => [
-  setTimeout(() => {
-    handleClick()
-  }, 5000),
-  setCount(count + 1)
-],[count])
+useEffect(() => {
+  const timerId = setTimeout(() => {
+   handleClick()
+   setCount(count + 1)
+  }, 5000)
+  return () => clearTimeout(timerId)
+}, [count])
 
   return (
     <div className='container'>
